@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^louis-halley\.fr$ [NC]
+RewriteCond %{REQUEST_URI} ^/projets [NC,OR]
+RewriteCond %{REQUEST_URI} ^/projects [NC]
+RewriteRule ^(.*)$ https://louis-halley.fr/#projects [NE,R=301,L]

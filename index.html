@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Louis Halley, ingénieur en informatique, UTT · Wavestone · L'Oréal · LSU">
+  <meta name="keywords" content="portfolio, Louis Halley, développeur, ingénieur, UTT, Wavestone">
+  <meta name="author" content="Louis Halley">
+  <title>Portfolio</title>
+  <link rel="icon" type="image/png" href="assets/img/logoRounded.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <link rel="stylesheet" href="./js/map_lib/dist/css/jsvectormap.css">
+  <link rel="stylesheet" href="css/v4.css">
+</head>
+
+<body>
+
+  <div id="loader" role="status" aria-label="Chargement">
+    <div class="loader-bg-blobs" aria-hidden="true">
+      <div class="ldr-blob ldr-blob-1"></div>
+      <div class="ldr-blob ldr-blob-2"></div>
+      <div class="ldr-blob ldr-blob-3"></div>
+      <div class="ldr-blob ldr-blob-4"></div>
+    </div>
+    <div class="loader-blob-wrap">
+      <div class="loader-blob" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <div id="nav-overlay" class="nav-overlay" aria-hidden="true"></div>
+
+  <div id="mobile-topbar">
+    <a href="#" class="mobile-brand">Louis Halley</a>
+    <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ── Sidebar ─────────────────────────────────────────────── -->
+  <nav id="sidebar" role="navigation" aria-label="Navigation principale">
+    <div class="sidebar-inner">
+
+      <a href="#about" class="sidebar-brand">
+        <img src="assets/img/profil.jpg" class="sidebar-photo" alt="Photo de Louis Halley">
+        <div class="sidebar-name">
+          <span class="sidebar-prenom">Louis</span>
+          <span class="sidebar-nom">Halley</span>
+        </div>
+      </a>
+
+      <hr class="sidebar-hr">
+
+      <ul class="sidebar-nav" role="list">
+        <li><a href="#about"     class="sidebar-link active">À propos</a></li>
+        <li><a href="#projects"  class="sidebar-link">Mes projets</a></li>
+        <li><a href="#travelmap" class="sidebar-link">Travel Map</a></li>
+        <li><a href="#cv"        class="sidebar-link">CV</a></li>
+      </ul>
+
+      <div class="sidebar-socials">
+        <a class="sidebar-social" href="mailto:louis.halley.job@gmail.com" title="E-mail">
+          <i class="ph ph-envelope-simple"></i>
+        </a>
+        <a class="sidebar-social" href="https://linkedin.hlly.fr/" target="_blank" rel="noopener" title="LinkedIn">
+          <i class="ph ph-linkedin-logo"></i>
+        </a>
+        <a class="sidebar-social" href="https://github.com/Odyrac" target="_blank" rel="noopener" title="GitHub">
+          <i class="ph ph-github-logo"></i>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ── Contenu principal ───────────────────────────────────── -->
+  <main id="content">
+
+    <!-- À propos -->
+    <section id="about" class="section about-section">
+
+      <div class="about-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+      </div>
+
+      <div class="about-container">
+        <div class="about-intro reveal">
+          <h1>Louis <span>Halley</span></h1>
+          <p class="about-role">
+            Étudiant ingénieur &nbsp;·&nbsp; UTT &nbsp;·&nbsp;
+            <a href="mailto:louis.halley.job@gmail.com">louis.halley.job@gmail.com</a>
+          </p>
+          <p class="about-lead">
+            Étudiant ingénieur à l'UTT, avec des stages chez <strong>Wavestone</strong> et
+            <strong>L'Oréal</strong> et un semestre d'échange à la
+            <strong>Louisiana State University</strong>. Passionné de développement web/mobile, de voile et de géopolitique.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <p class="section-tag reveal">Ce que j'ai construit</p>
+        <h2 class="section-title reveal">Mes <span>projets</span></h2>
+        <p class="section-sub reveal">
+          Applications mobiles, sites web, programmes et bots : une sélection de projets
+          personnels et universitaires.
+        </p>
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="program">Programmes</button>
+          <button class="filter-btn" data-filter="bot">Bots</button>
+        </div>
+        <div id="projects-grid" class="projects-grid" role="list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Travel Map -->
+    <section id="travelmap" class="section">
+      <div class="container">
+        <p class="section-tag reveal">Le monde vu de ma fenêtre</p>
+        <h2 class="section-title reveal">Travel <span>Map</span></h2>
+        <p class="section-sub reveal">
+          20 pays visités, des États-Unis à l'Ouzbékistan en passant par le Vietnam et la Namibie.
+        </p>
+        <div id="map-inner" class="reveal">
+          <div id="map" style="height:100%;width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section section-alt">
+      <div class="container">
+        <p class="section-tag reveal">Plus d'infos</p>
+        <h2 class="section-title reveal">Curriculum <span>Vitæ</span></h2>
+        <p class="section-sub reveal">Mon CV est disponible en français et en anglais.</p>
+        <div class="cv-cards reveal">
+          <a class="cv-card" href="https://assets.hlly.fr/cv" target="_blank" rel="noopener">
+            <div class="cv-info">
+              <span class="cv-lang">Français</span>
+              <span class="cv-hint">Télécharger le PDF</span>
+            </div>
+            <i class="ph ph-arrow-up-right cv-icon"></i>
+          </a>
+          <!--<a class="cv-card" href="https://assets.hlly.fr/cv/en" target="_blank" rel="noopener">
+            <div class="cv-info">
+              <span class="cv-lang">English</span>
+              <span class="cv-hint">Download PDF</span>
+            </div>
+            <i class="ph ph-arrow-up-right cv-icon"></i>
+          </a>-->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>v4.0.1 · <a href="mailto:louis.halley.job@gmail.com">louis.halley.job@gmail.com</a></p>
+    </footer>
+
+  </main>
+
+  <script src="./js/map_lib/dist/js/jsvectormap.js"></script>
+  <script src="./js/map_lib/dist/maps/world.js"></script>
+  <script src="./js/map_lib/dist/maps/world-merc.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/v4.js"></script>
+
+</body>
+</html>
