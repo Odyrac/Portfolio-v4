@@ -1,4 +1,23 @@
+ErrorDocument 404 /404.html
+
 RewriteEngine On
+
+# Masquer index.html — redirige vers /
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Masquer les extensions .html — redirige /page.html vers /page
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/([^/]+)\.html [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# Servir le fichier .html correspondant quand l'URL n'a pas d'extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+RewriteCond %{HTTP_HOST} ^louis-halley\.fr$ [NC]
+RewriteRule ^cv$ https://assets.hlly.fr/cv [R=301,L]
 RewriteCond %{HTTP_HOST} ^louis-halley\.fr$ [NC]
 RewriteCond %{REQUEST_URI} ^/projets [NC,OR]
 RewriteCond %{REQUEST_URI} ^/projects [NC]
