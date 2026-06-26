@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable</title>
+  <link rel="icon" type="image/png" href="assets/img/logoRounded.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:  #164E42;
+      --bg:       #ffffff;
+      --text:     #1a2e28;
+      --text-dim: #6b8f7c;
+      --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) #e0ede8;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.65;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    ::selection { background: var(--primary); color: #fff; }
+
+    .blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      filter: blur(52px);
+      will-change: transform;
+    }
+
+    .blob-1 {
+      width: 500px; height: 500px;
+      background: rgba(22,78,66,0.16);
+      top: -130px; left: 10%;
+      border-radius: 62% 38% 54% 46% / 50% 60% 40% 50%;
+      animation: lava1 13s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 380px; height: 420px;
+      background: rgba(22,78,66,0.11);
+      bottom: -90px; right: 6%;
+      border-radius: 44% 56% 62% 38% / 58% 42% 58% 42%;
+      animation: lava2 17s ease-in-out infinite alternate;
+      animation-delay: -5s;
+    }
+    .blob-3 {
+      width: 320px; height: 360px;
+      background: rgba(22,78,66,0.14);
+      top: 28%; left: -70px;
+      border-radius: 56% 44% 38% 62% / 44% 56% 44% 56%;
+      animation: lava3 11s ease-in-out infinite alternate;
+      animation-delay: -3s;
+    }
+    .blob-4 {
+      width: 260px; height: 280px;
+      background: rgba(22,78,66,0.09);
+      top: 8%; right: 20%;
+      border-radius: 50% 50% 42% 58% / 56% 44% 56% 44%;
+      animation: lava4 15s ease-in-out infinite alternate;
+      animation-delay: -8s;
+    }
+    .blob-5 {
+      width: 220px; height: 240px;
+      background: rgba(22,78,66,0.13);
+      bottom: 12%; left: 40%;
+      border-radius: 40% 60% 56% 44% / 48% 52% 48% 52%;
+      animation: lava1 12s ease-in-out infinite alternate;
+      animation-delay: -2s;
+    }
+
+    @keyframes lava1 {
+      0%   { transform: translate(0,0)        scale(1);    border-radius: 62% 38% 54% 46% / 50% 60% 40% 50%; }
+      25%  { transform: translate(40px,65px)  scale(1.07); border-radius: 44% 56% 44% 56% / 60% 40% 55% 45%; }
+      50%  { transform: translate(-30px,95px) scale(0.96); border-radius: 56% 44% 62% 38% / 44% 56% 44% 56%; }
+      75%  { transform: translate(60px,20px)  scale(1.05); border-radius: 38% 62% 48% 52% / 52% 48% 58% 42%; }
+      100% { transform: translate(20px,-50px) scale(1.1);  border-radius: 52% 48% 40% 60% / 55% 45% 50% 50%; }
+    }
+    @keyframes lava2 {
+      0%   { transform: translate(0,0)         scale(1);    border-radius: 44% 56% 62% 38% / 58% 42% 58% 42%; }
+      33%  { transform: translate(-55px,-40px) scale(1.12); border-radius: 58% 42% 46% 54% / 42% 58% 42% 58%; }
+      66%  { transform: translate(40px,-80px)  scale(0.92); border-radius: 50% 50% 56% 44% / 60% 40% 48% 52%; }
+      100% { transform: translate(-20px,50px)  scale(1.06); border-radius: 62% 38% 44% 56% / 46% 54% 52% 48%; }
+    }
+    @keyframes lava3 {
+      0%   { transform: translate(0,0)        scale(1);    border-radius: 56% 44% 38% 62% / 44% 56% 44% 56%; }
+      40%  { transform: translate(70px,-50px) scale(1.1);  border-radius: 44% 56% 56% 44% / 56% 44% 60% 40%; }
+      80%  { transform: translate(30px,80px)  scale(0.94); border-radius: 60% 40% 44% 56% / 40% 60% 40% 60%; }
+      100% { transform: translate(50px,30px)  scale(1.04); border-radius: 50% 50% 60% 40% / 52% 48% 44% 56%; }
+    }
+    @keyframes lava4 {
+      0%   { transform: translate(0,0)        scale(1);    border-radius: 50% 50% 42% 58% / 56% 44% 56% 44%; }
+      50%  { transform: translate(-60px,70px) scale(0.9);  border-radius: 42% 58% 58% 42% / 44% 56% 44% 56%; }
+      100% { transform: translate(50px,-60px) scale(1.15); border-radius: 60% 40% 50% 50% / 40% 60% 50% 50%; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .code {
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -.05em;
+    }
+
+    .code span { color: var(--primary); }
+
+    .msg {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      margin-top: .8rem;
+      line-height: 1.85;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+  </div>
+
+  <div class="content">
+    <p class="code">4<span>0</span>4</p>
+    <p class="msg">Cette page n'existe pas.</p>
+  </div>
+
+  <script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
+</body>
+
+</html>
