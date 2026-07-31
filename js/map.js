@@ -45,6 +45,7 @@ var markers = [
   { name: 'Crète',        coords: [35.2, 24.9]   },
   { name: 'Cyclades',     coords: [37,   25]     },
   { name: 'Ouzbékistan',  coords: [41.5, 64.3]   },
+  { name: 'Rhodes',       coords: [36.2, 28]     },
 ];
 
 
