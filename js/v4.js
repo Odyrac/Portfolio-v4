@@ -34,31 +34,36 @@ function updateSidebarForm() {
 }
 updateSidebarForm();
 
+// ─── Scroll spy (sidebar links) ───────────────────────────────────────────────
+// Computed from scroll position (not IntersectionObserver) so fast scrolling
+// can't skip a section between two observer samples.
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const spySections  = Array.from(document.querySelectorAll('section[id]'));
+
+function updateActiveSection(total) {
+  if (total > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+    const lastId = spySections[spySections.length - 1].id;
+    sidebarLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + lastId));
+    return;
+  }
+
+  const line = window.innerHeight * 0.25;
+  let activeId = spySections[0].id;
+  for (const s of spySections) {
+    if (s.getBoundingClientRect().top <= line) activeId = s.id;
+  }
+  sidebarLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + activeId));
+}
+
+updateActiveSection(document.documentElement.scrollHeight - window.innerHeight);
+
 window.addEventListener('scroll', () => {
   const total = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = total > 0 ? (window.scrollY / total * 100) + '%' : '0%';
 
   updateSidebarForm();
-
-  // When the page can't scroll further, force the last section active
-  if (total > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
-    sidebarLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#cv'));
-  }
+  updateActiveSection(total);
 }, { passive: true });
-
-// ─── Scroll spy (sidebar links) ───────────────────────────────────────────────
-const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-const spyObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      sidebarLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-    }
-  });
-}, { rootMargin: '-20% 0px -70% 0px' });
-
-document.querySelectorAll('section[id]').forEach(s => spyObserver.observe(s));
 
 // ─── Mobile sidebar ───────────────────────────────────────────────────────────
 const burger  = document.getElementById('burger');
@@ -161,7 +166,9 @@ const projects = [
     img: './assets/img/projets/stories.png',
     desc: 'Télécharge les stories Instagram à la une via webscraping pour les conserver localement.',
     stack: ['PHP', 'Python'],
-    links: []
+    links: [
+      { icon: 'ph ph-globe', url: 'https://stories.hlly.fr/', title: 'Site web' }
+    ]
   },
   {
     name: 'Note2Film v3',
