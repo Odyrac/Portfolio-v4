@@ -148,6 +148,17 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ─── Projects data ────────────────────────────────────────────────────────────
 const projects = [
   {
+    name: 'Cadence',
+    type: 'Site web',
+    category: 'web',
+    img: './assets/img/projets/cadence.png',
+    desc: 'Publiez vos visuels sur Instagram et Threads en une seule fois, avec des visuels générés par IA selon votre charte graphique.',
+    stack: ['Next.js'],
+    links: [
+      { icon: 'ph ph-globe', url: 'https://cadence.hlly.fr/', title: 'Site web' }
+    ]
+  },
+  {
     name: 'Tonight',
     type: 'Application mobile',
     category: 'mobile',

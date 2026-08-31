@@ -46,6 +46,8 @@ var markers = [
   { name: 'Cyclades',     coords: [37,   25]     },
   { name: 'Ouzbékistan',  coords: [41.5, 64.3]   },
   { name: 'Rhodes',       coords: [36.2, 28]     },
+  { name: 'Seychelles',   coords: [-4.6, 55.5]   },
+  { name: 'Istanbul',     coords: [41,   29]     },
 ];
 
 
@@ -56,7 +58,7 @@ var country_visited = [
   'FR', 'ES', 'NA', 'DE', 'US',
   'MA', 'IT', 'PT', 'LK', 'CR',
   'CY', 'IE', 'GR', 'GB', 'VN',
-  'LU', 'UZ',
+  'LU', 'UZ', 'TR',
 ];
 
 
