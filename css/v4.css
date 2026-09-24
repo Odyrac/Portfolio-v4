@@ -214,6 +214,43 @@ body {
   border-color: rgba(255,255,255,0.28); transform: translateY(-2px);
 }
 
+/* ── Sidebar — écrans peu hauts : retour au flux normal ──────────
+   Le nav est centré en absolu (top:50%) pour rester au milieu quand
+   le brand/les socials s'effacent en mode "collapsed". Sous ~760px de
+   hauteur, ce centrage le fait passer sous la photo : on repasse en
+   flux avec margin auto (centrage dans l'espace restant). */
+@media (max-height: 760px) {
+  .sidebar-inner { padding: 1.75rem 1.5rem; }
+  .sidebar-brand { gap: .85rem; margin-bottom: 1.25rem; }
+  .sidebar-photo { width: 78px; height: 78px; }
+  .sidebar-nom { font-size: 1.3rem; }
+  .sidebar-hr { margin-bottom: 1rem; }
+
+  .sidebar-nav {
+    position: static; transform: none;
+    left: auto; right: auto; top: auto;
+    margin: auto 0;
+  }
+  .sidebar-socials {
+    position: static;
+    left: auto; right: auto; bottom: auto;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-height: 580px) {
+  .sidebar-inner { padding: 1.25rem 1.25rem; }
+  .sidebar-brand { flex-direction: row; gap: .75rem; margin-bottom: 1rem; }
+  .sidebar-photo { width: 48px; height: 48px; border-width: 2px; box-shadow: 0 0 0 4px rgba(255,255,255,0.14), 0 6px 18px rgba(0,0,0,0.2); }
+  .sidebar-name { text-align: left; }
+  .sidebar-nom { font-size: 1.15rem; }
+  .sidebar-hr { margin-bottom: .75rem; }
+  .sidebar-link { padding: .45rem .9rem; }
+  .sidebar-nav { gap: 4px; }
+  .sidebar-socials { margin-top: 1rem; padding-top: .75rem; }
+  .sidebar-social { width: 32px; height: 32px; font-size: .95rem; }
+}
+
 /* ── Sidebar — état "about" : tout piloté par --sidebar-t (0→1 avec le scroll) */
 @media (min-width: 992px) {
   #sidebar.collapsed .sidebar-brand,
