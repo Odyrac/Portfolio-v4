@@ -5,7 +5,10 @@ document.addEventListener('contextmenu', e => e.preventDefault());
 
 // ─── Loader ───────────────────────────────────────────────────────────────────
 window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 700);
+  setTimeout(() => {
+    document.documentElement.classList.add('ready');
+    document.getElementById('loader').classList.add('hidden');
+  }, 700);
 });
 
 // ─── Clean URL — support incoming /#ancre links from external sites ───────────

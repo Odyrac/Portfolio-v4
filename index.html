@@ -12,6 +12,22 @@
   <link rel="icon" type="image/png" href="assets/img/logoRounded.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Critical CSS : loader visible dès le premier rendu, contenu masqué tant que la page n'est pas chargée -->
+  <style>
+    html, body { margin: 0; background: #ffffff; }
+    html:not(.ready) body > :not(#loader) { visibility: hidden; }
+    #loader {
+      position: fixed; inset: 0; background: #ffffff; z-index: 9999;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .loader-blob-wrap { position: relative; width: 36px; height: 36px; z-index: 1; }
+    .loader-blob {
+      position: absolute; inset: 0; background: rgba(22,78,66,0.22);
+      border-radius: 62% 38% 54% 46% / 50% 60% 40% 50%;
+    }
+  </style>
+  <noscript><style>html:not(.ready) body > :not(#loader) { visibility: visible; } #loader { display: none; }</style></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
   <link rel="stylesheet" href="./js/map_lib/dist/css/jsvectormap.css">
   <link rel="stylesheet" href="css/v4.css">
@@ -169,7 +185,7 @@
     </section>
 
     <footer>
-      <p>v4.0.3 · <a href="mailto:louis.halley.job@gmail.com">louis.halley.job@gmail.com</a></p>
+      <p>v4.0.4 · <a href="mailto:louis.halley.job@gmail.com">louis.halley.job@gmail.com</a></p>
     </footer>
 
   </main>
